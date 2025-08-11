@@ -1,0 +1,24 @@
+// Color styles
+$color-yellow: #F4F0B3;
+$color-dark-yellow: #FFDF56;
+$color-purple: #BC6D5E;
+$color-green: #749B58;
+
+
+@mixin en-font {
+  font-family: "Chelsea Market", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin ko-basic {
+  font-family: "Gowun Batang", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin ko-bold {
+  font-family: "Gowun Batang", serif;
+  font-weight: 700;
+  font-style: normal;
+}
