@@ -1,37 +1,64 @@
-.aboutme-title {
-  @include en-font;
-  font-size: 80px;
-  background-color: black;
-  color: white;
-  width: 730px;
-  height: 120px;
-  border-radius: 20px;
-  position: fixed;
-  top: 2rem;
-  left: 2rem;       // 왼쪽에 딱 붙이기
-  z-index: 1000;    // 충분히 높게
-}
+.about-me-wrapper {
+  padding: 3rem;
 
-ol {
-  margin-top: 160px;  // 타이틀 아래 공간 확보
-  padding-left: 2rem; // 타이틀과 같은 왼쪽 여백 맞추기
-
-  li {
+  .absolute-title {
     @include en-font;
-    font-size: 60px;
-    padding: 3.5rem 0;
-    transition: color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-    cursor: pointer;
-    transform-origin: left center;
-    position: relative;
-    z-index: 10;
+    font-size: 80px;
+    transform: rotate(-8deg); // 왼쪽으로 살짝 비스듬하게
+    display: inline-block; // 회전 적용 안정성
+  }
 
-    &:hover {
-      transform: translateY(-8px) scale(1.1);
-      background-color: $color-yellow;
+  .main-content {
+    text-align: center;
 
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-      z-index: 30;
+    .main-heading {
+      @include ko-bold;
+      font-size: 100px;
+      padding-bottom: 3rem 0;
+      position: relative;
+      border: 5px solid #888;
+      border-radius: 35% 65% 45% 75% / 65% 45% 75% 35%;
+      box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15), -1px -1px 0 rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.15))
+        drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.15));
+      background: transparent;
+
+      outline: 4px solid #aaa;
+      outline-offset: 8px;
+      /* outline-radius 삭제 */
+
+      .highlight-keyword {
+        font-size: 120px;
+      }
+    }
+
+    .description-text {
+      padding-top: 25rem;
+
+      p {
+        position: relative;
+        font-size: 36px;
+        margin-bottom: 5rem;
+        padding: 1rem 2rem;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 150%;
+          height: 70%;
+          background: radial-gradient(
+            circle at center,
+            rgba(255, 182, 193, 0.3),
+            transparent 70%
+          );
+          filter: blur(10px);
+          transform: translate(-50%, -50%) rotate(-10deg);
+          z-index: -1;
+          pointer-events: none;
+        }
+      }
     }
   }
 }

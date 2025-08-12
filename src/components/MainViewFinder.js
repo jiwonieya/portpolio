@@ -1,69 +1,58 @@
-import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const MainViewFinder = () => {
-  const viewfinderRef = useRef(null);
-  const textRef = useRef(null);
-
+  const containerRef = useRef(null);
+  const maskRef = useRef(null);
+  
   useEffect(() => {
-    const minSize = 400;
-    const maxSize = Math.min(window.innerWidth, window.innerHeight);
+  if (!maskRef.current || !containerRef.current) return;
 
-    gsap.to(viewfinderRef.current, {
+  const st = gsap.fromTo(
+    maskRef.current,
+    { "--r": "160px", "--x": "50%", "--y": "50%" },
+    {
+      "--r": `${window.innerWidth/2}px`,
+      ease: "none",
       scrollTrigger: {
-        trigger: ".container",
+        trigger: containerRef.current,
         start: "top top",
-        end: "bottom top",
-        scrub: 1,
-        onUpdate: (self) => {
-          const progress = self.progress*4; // 0~1
-          const size = minSize + (maxSize - minSize) * progress;
-
-          gsap.set(viewfinderRef.current, {
-            width: size,
-            height: size,
-            borderRadius: size > maxSize * 0.8 ? 0 : "15px",
-          });
-        },
-      },
-      ease: "power1.out",
-    });
-
-    gsap.to(textRef.current, {
-      scrollTrigger: {
-        trigger: ".container",
-        start: "top top",
-        end: 250,
+        end: "+=300%",   
         scrub: true,
+        pin: true,
+        pinSpacing: true,
+        // markers: true,
       },
-      opacity: 0,
-      ease: "power1.out",
-    });
+    }
+  );
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-    };
-  }, []);
+  // 이미지 로드/리사이즈 후 재계산
+  const onResize = () => ScrollTrigger.refresh();
+  window.addEventListener("resize", onResize);
+
+  return () => {
+    window.removeEventListener("resize", onResize);
+    st.scrollTrigger?.kill();
+    st.kill();
+  };
+}, []);
 
   return (
-    <div className="container">
+    <div className="container" ref={containerRef}>
       <img
-        src={`${process.env.PUBLIC_URL}/images/jiwon-prof.jpg`}
+        src={`${process.env.PUBLIC_URL}/images/jiwon-prof1.jpg`}
         alt="배경 프로필"
         className="background-image"
       />
 
-      <div ref={viewfinderRef} className="viewfinder">
-        <div className="viewfinder__mask" />
+      <div className="viewfinder">
+        <div className="viewfinder__mask" ref={maskRef} />
       </div>
 
-      <h1 
-      className="main-ment"
-      ref={textRef}>Jiwon's PortPolio</h1>
+      <h1 className="main-ment">Jiwon's PortPolio</h1>
     </div>
   );
 };

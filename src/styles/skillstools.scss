@@ -1,0 +1,93 @@
+.skillstools-wrapper {
+  padding: 3rem;
+
+  h1 {
+    @include en-font;
+    font-size: 80px;
+    transform: rotate(-8deg);
+  }
+
+  .img-wrapper {
+    padding: 8rem 0;
+    position: relative;
+    height: 100vh;
+    .css {
+      width: 171px;
+      height: 171px;
+      position: absolute;
+      left: 1500px;
+      transform: rotate(-10deg);
+    }
+    .figma {
+        width: 193px;
+        width: 193px;
+        position: absolute;
+        left: 1500px;
+        bottom: 200px;
+        transform: rotate(8deg);
+    }
+    .github {
+        width: 152px;
+        height: 152px;
+        position: absolute;
+        left: 1100px;
+        bottom: 100px;
+        transform: rotate(-8deg);
+    }
+    .html {
+        width: 182px;
+        height: 182px;
+        position: absolute;
+        left: 900px;
+        top: 200px;
+        transform: rotate(7deg);
+
+    }
+    .illustrator {
+        width: 166px;
+        height: 166px;
+        position: absolute;
+        left: 1100px;
+        top: 550px;
+        transform: rotate(-9deg);
+    }
+    .javascript {
+        width: 185px;
+        height: 185px;
+        position: absolute;
+        bottom: 400px;
+        left: 100px;
+        transform: rotate(8deg);
+    }
+    .photoshop {
+        width: 175px;
+        height: 175px;
+        position: absolute;
+        left: 600px;
+        bottom: 500px;
+        transform: rotate(-6deg);
+    }
+    .react {
+        width: 155px;
+        height: 155px;
+        position: absolute;
+        bottom: 100px;
+        left: 680px;
+        transform: rotate(7deg);
+    }
+    .sass {
+        width: 175px;
+        height: 175px;
+        position: absolute;
+        bottom: 90px;
+        left: 200px;
+    }
+    .supabase {
+        width: 223px;
+        height: 223px;
+        position: absolute;
+        left: 400px;
+        top: 200px;
+    }
+  }
+}

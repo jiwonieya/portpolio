@@ -1,0 +1,103 @@
+.aboutme-wrap {
+  min-height: 100vh;
+  opacity: 0;               // 초기 숨김 상태
+  transform: translateY(50px);  // 아래 위치에서 시작
+  will-change: opacity, transform;
+  margin: 200px 0;
+}
+
+.aboutme-title {
+  @include en-font;
+  font-size: 80px;
+  background-color: black;
+  color: white;
+  width: 730px;
+  height: 120px;
+  border-radius: 20px;
+}
+
+ol {
+  margin-top: 160px;
+  padding-left: 2rem;
+  width: 90%;
+  position: relative;
+  z-index: 1000;
+
+  li {
+    @include en-font;
+    font-size: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 2rem;
+    cursor: pointer;
+    border-bottom: 2px solid #ccc;
+    border-radius: 0;
+    margin-bottom: 3rem;
+
+    .label {
+      flex-shrink: 0;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .hover-text {
+      position: relative;
+      background-color: transparent;
+      color: #222;
+      padding: 1rem 2rem;
+      font-size: 60px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: default;
+
+      border: 3px solid #888;
+      border-radius: 30px 60px 30px 60px / 50% 40% 60% 50%;
+      filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.15))
+        drop-shadow(-1px -1px 0 rgba(0, 0, 0, 0.15));
+
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        border: 3px solid #aaa;
+        border-radius: 40% 60% 50% 70% / 60% 40% 70% 50%;
+        top: -8px;
+        left: -12px;
+        width: 120%;
+        height: 120%;
+        pointer-events: none;
+        opacity: 0.3;
+      }
+
+      &::after {
+        top: -12px;
+        left: -20px;
+        opacity: 0.15;
+      }
+    }
+
+    &.main:hover .hover-text,
+    &.clone:hover .hover-text {
+      white-space: normal;
+      line-height: 1.8em;
+      padding: 1.5rem 2rem;
+      cursor: pointer;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+      border-radius: 15px;
+
+      .hover-text {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  }
+}
