@@ -1,0 +1,113 @@
+.auto-scroll-tip-top {
+  position: fixed;
+  top: 25px;
+  right: 60px; /* 엑스버튼 옆 */
+  background: #fff;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.pin-wrapper {
+  min-height: 100vh;
+  padding: 3rem 8rem;
+  background-color: black;
+  color: white;
+  position: relative;
+
+  .close-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .pin-txt {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    h2 {
+      @include en-font;
+      font-size: 100px;
+      transform: rotate(-8deg);
+      margin: 0;
+    }
+    .pin-ment {
+      font-size: 24px;
+      text-align: right;
+      width: 60%;
+    }
+  }
+
+  .link-img {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    height: 711px;
+
+    .pin-links {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 84px;
+        background-color: white;
+        color: black;
+        @include en-font;
+        font-size: 30px;
+        border-radius: 30px;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        svg {
+          width: 55px;
+          height: 55px;
+        }
+      }
+    }
+
+    img {
+      width: 311px;
+      height: 711px;
+      border-radius: 20px;
+    }
+  }
+}
+
+// /* 다른 섹션들 최소 높이 100vh */
+// .ririm-overview,
+// // .ririm-ds,
+// .ririm-uf,
+// .ririm-rwd,
+// .ririm-ending {
+//   min-height: 100vh;
+// }

@@ -1,18 +1,22 @@
-import React from 'react';
-import MainViewFinder from "./components/MainViewFinder";
-import PortpolioIndex from "./components/PortpolioIndex";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainPage from './components/MainPage';
+import RirimIntro from './components/RirimIntro';
+import PinIntro from './components/PinIntro';
+import BlogIntro from './components/BlogIntro';
+import MainProject from './components/MainProject';
 import './App.scss';
-import AboutMe from './components/AboutMe';
-import SkillsTools from './components/SkillsTools';
 
 const App = () => {
   return (
-    <div className="App">
-      <MainViewFinder />
-      <PortpolioIndex />
-      <AboutMe />
-      <SkillsTools />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<MainPage />} />
+        <Route path="/main-project" element={<MainProject />} />
+        <Route path="/ririm-intro" element={<RirimIntro />} />
+        <Route path="/pin-intro" element={<PinIntro />} />
+        <Route path="/blog-intro" element={<BlogIntro />} />
+      </Routes>
+    </Router>
   );
 };
 

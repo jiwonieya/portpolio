@@ -1,0 +1,39 @@
+.pinds {
+  background-color: black;
+  color: white;
+  padding: 3rem;
+
+  h3{
+    @include en-font;
+    font-size: 100px;
+    margin: 2rem 0 5rem;
+  }
+
+  .cf-wrap {
+    text-align: center;
+
+    .color-wrap {
+      margin-bottom: 4rem; // 컬러와 폰트 사이 간격
+      text-align: center;
+    }
+
+    .font-wrap {
+      margin-bottom: 0; // 마지막 항목은 0
+      text-align: center;
+    }
+
+    .pincolor,
+    .pinfont {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+
+    .pincolorment,
+    .pinfontment {
+      @include ko-bold;
+      font-size: 40px;
+      margin-top: 1rem;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.ririmrwd {
+  background-color: black;
+  color: white;
+  padding: 3rem;
+
+  h1 {
+    @include en-font;
+    font-size: 100px;
+  }
+
+  .img-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5rem;
+
+    .box {
+      text-align: center;
+
+      img {
+        max-width: 300px; // 이미지 최대 너비 제한
+        height: auto; // 비율 유지
+        border-radius: 10px;
+      }
+
+      p {
+        @include en-font;
+        font-size: 60px;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}

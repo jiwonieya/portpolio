@@ -11,83 +11,165 @@
     padding: 8rem 0;
     position: relative;
     height: 100vh;
+
+    .skill-item {
+      position: absolute;
+      opacity: 0;
+      transform: scale(0);
+      transition: opacity 0.3s ease;
+
+      &.visible {
+        opacity: 1;
+        animation: popIn 0.3s ease-out forwards;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+      }
+
+      .tooltip {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translate(-50%, 50%) scale(0.8);
+        padding: 8px 14px;
+        border-radius: 5px;
+        @include en-font;
+        font-size: 80px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+
+      &:hover img {
+        opacity: 0;
+      }
+
+      &:hover .tooltip {
+        opacity: 1;
+        transform: translate(-50%, 50%) scale(1);
+      }
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.15);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* 각 스킬별 브랜드 색 */
+    .css .tooltip {
+      color: #2965f1;
+    }
+    .figma .tooltip {
+      color: #a259ff;
+    }
+    .github .tooltip {
+      color: #333;
+    }
+    .html .tooltip {
+      color: #e34f26;
+    }
+    .illustrator .tooltip {
+      color: #ff9a00;
+    }
+    .javascript .tooltip {
+      color: #f7df1e;
+    }
+    .photoshop .tooltip {
+      color: #31a8ff;
+    }
+    .react .tooltip {
+      color: #61dafb;
+    }
+    .sass .tooltip {
+      color: #cc6699;
+    }
+    .supabase .tooltip {
+      color: #3ecf8e;
+    }
+
+    /* 기존 절대 좌표 스타일 유지 */
     .css {
       width: 171px;
       height: 171px;
-      position: absolute;
       left: 1500px;
       transform: rotate(-10deg);
     }
     .figma {
-        width: 193px;
-        width: 193px;
-        position: absolute;
-        left: 1500px;
-        bottom: 200px;
-        transform: rotate(8deg);
+      width: 193px;
+      height: 193px;
+      left: 1500px;
+      bottom: 200px;
+      transform: rotate(8deg);
     }
     .github {
-        width: 152px;
-        height: 152px;
-        position: absolute;
-        left: 1100px;
-        bottom: 100px;
-        transform: rotate(-8deg);
+      width: 152px;
+      height: 152px;
+      left: 1100px;
+      bottom: 100px;
+      transform: rotate(-8deg);
     }
     .html {
-        width: 182px;
-        height: 182px;
-        position: absolute;
-        left: 900px;
-        top: 200px;
-        transform: rotate(7deg);
-
+      width: 182px;
+      height: 182px;
+      left: 900px;
+      top: 200px;
+      transform: rotate(7deg);
     }
     .illustrator {
-        width: 166px;
-        height: 166px;
-        position: absolute;
-        left: 1100px;
-        top: 550px;
-        transform: rotate(-9deg);
+      width: 166px;
+      height: 166px;
+      left: 1100px;
+      top: 550px;
+      transform: rotate(-9deg);
     }
     .javascript {
-        width: 185px;
-        height: 185px;
-        position: absolute;
-        bottom: 400px;
-        left: 100px;
-        transform: rotate(8deg);
+      width: 185px;
+      height: 185px;
+      bottom: 400px;
+      left: 100px;
+      transform: rotate(8deg);
     }
     .photoshop {
-        width: 175px;
-        height: 175px;
-        position: absolute;
-        left: 600px;
-        bottom: 500px;
-        transform: rotate(-6deg);
+      width: 175px;
+      height: 175px;
+      left: 600px;
+      bottom: 500px;
+      transform: rotate(-6deg);
     }
     .react {
-        width: 155px;
-        height: 155px;
-        position: absolute;
-        bottom: 100px;
-        left: 680px;
-        transform: rotate(7deg);
+      width: 155px;
+      height: 155px;
+      bottom: 100px;
+      left: 680px;
+      transform: rotate(7deg);
     }
     .sass {
-        width: 175px;
-        height: 175px;
-        position: absolute;
-        bottom: 90px;
-        left: 200px;
+      width: 175px;
+      height: 175px;
+      bottom: 90px;
+      left: 200px;
     }
     .supabase {
-        width: 223px;
-        height: 223px;
-        position: absolute;
-        left: 400px;
-        top: 200px;
+      width: 223px;
+      height: 223px;
+      left: 400px;
+      top: 200px;
     }
   }
 }
