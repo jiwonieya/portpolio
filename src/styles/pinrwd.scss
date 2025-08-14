@@ -1,0 +1,33 @@
+.pinrwd {
+  background-color: black;
+  color: white;
+  padding: 3rem;
+
+  .pinrwd-title {
+    @include en-font;
+    font-size: 100px;
+  }
+
+  .pin-img-wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5rem;
+
+    .pin-box {
+      text-align: center;
+
+      .pin-img {
+        max-width: 300px; // 이미지 최대 너비 제한
+        height: auto; // 비율 유지
+        border-radius: 10px;
+      }
+
+      .pin-sub-title {
+        @include en-font;
+        font-size: 60px;
+        margin-top: 1.5rem;
+      }
+    }
+  }
+}

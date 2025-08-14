@@ -1,0 +1,19 @@
+.pinuf {
+  background-color: black;
+  color: white;
+  padding: 3rem;
+
+ .pin-user-flow {
+    @include en-font;
+    font-size: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .pin-user-flow-img {
+    display: block; 
+    margin: 0 auto; 
+    max-width: 100%; 
+    height: auto;
+    border-radius: 20px;
+  }
+}
