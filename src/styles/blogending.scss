@@ -1,0 +1,33 @@
+.blog-ending {
+  background-color: black;
+  color: white;
+  padding: 3rem;
+
+  h1 {
+    @include en-font;
+    font-size: 100px;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  .section {
+    display: flex;
+    align-items: flex-start; // h2와 p 윗줄 기준 맞춤
+    gap: 8rem; // 제목과 내용 사이 간격
+    margin-bottom: 80px;
+
+    h2 {
+      @include ko-bold;
+      font-size: 40px;
+      flex-shrink: 0;
+      width: 200px; // 줄 바꿈 방지
+      white-space: nowrap; // 제목 한 줄 유지
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 30px;
+      flex: 1; // 남는 공간 차지
+    }
+  }
+}

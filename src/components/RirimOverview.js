@@ -21,13 +21,13 @@ const RirimOverview = () => {
 
                 <div className="sub-section">
                     <h4 className="sub-label">UI 디자인 방식</h4>
-                    <p className="content">Figma를 이용한 디자인 시스템 구축 후 코드 구현</p>
+                    <p className="content">Figma를 이용한<br/>디자인 시스템 구축 후 <br/>코드 구현</p>
                 </div>
 
                 <div className="sub-section">
                     <h4 className="sub-label">레이아웃 제작 방식</h4>
                     <p className="content">
-                        React 기반으로 기능별 컴포넌트를 나누고, 재사용과 유지 보수가 쉽도록 설계<br />
+                        React 기반으로 기능별 컴포넌트를 나누고, 재사용과 유지 보수 쉽도록 설계<br />
                         Flex와 Grid를 활용해 콘텐츠를 정리하고,<br />
                         상품 리스트는 2~4열로 나눈 카드 형태로 배치<br />
                         React Router를 이용해 주요 기능이 담긴 여러 페이지를 자연스럽게 연결

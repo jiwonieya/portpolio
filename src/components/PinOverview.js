@@ -22,7 +22,7 @@ const PinOverview = () => {
 
                 <div className="sub-section">
                     <h4 className="sub-label">UI 디자인 방식</h4>
-                    <p className="content">Figma를 이용한 디자인 시스템 구축 후 코드 구현</p>
+                    <p className="content">Figma를 이용한 <br/>디자인 시스템 구축 후 <br/>코드 구현</p>
                 </div>
 
                 <div className="sub-section">
