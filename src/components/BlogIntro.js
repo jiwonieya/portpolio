@@ -28,11 +28,7 @@ const BlogIntro = () => {
       window.scrollTo(0, 0);
       setShowTip(true);
 
-      const sections = [
-        wrapperRef,
-        overviewRef,
-        endingRef,
-      ];
+      const sections = [wrapperRef, overviewRef, endingRef];
 
       const tl = gsap.timeline({
         defaults: { duration: 2, ease: "power2.inOut" },
@@ -87,8 +83,18 @@ const BlogIntro = () => {
     };
 
     document.body.addEventListener("click", handleClick);
-    return () => document.body.removeEventListener("click", handleClick);
+    return () => {
+      document.body.removeEventListener("click", handleClick);
+      tlRef.current?.kill();
+      gsap.killTweensOf(window);
+    };
   }, []);
+
+  const handleClose = () => {
+    tlRef.current?.kill();
+    gsap.killTweensOf(window);
+    navigate(-1);
+  };
 
   return (
     <div className="blog-container">
@@ -99,7 +105,7 @@ const BlogIntro = () => {
       )}
 
       <section className="blog-wrapper" ref={wrapperRef}>
-        <button className="close-btn" onClick={() => navigate("/main-project")}>
+        <button className="close-btn" onClick={handleClose}>
           <AiOutlineClose size={30} />
         </button>
 

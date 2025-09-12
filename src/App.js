@@ -3,7 +3,6 @@ import MainPage from './components/MainPage';
 import RirimIntro from './components/RirimIntro';
 import PinIntro from './components/PinIntro';
 import BlogIntro from './components/BlogIntro';
-import MainProject from './components/MainProject';
 import './App.scss';
 
 const App = () => {
@@ -11,7 +10,6 @@ const App = () => {
     <Router>
       <Routes>
         <Route path='/' element={<MainPage />} />
-        <Route path="/main-project" element={<MainProject />} />
         <Route path="/ririm-intro" element={<RirimIntro />} />
         <Route path="/pin-intro" element={<PinIntro />} />
         <Route path="/blog-intro" element={<BlogIntro />} />
@@ -19,5 +17,4 @@ const App = () => {
     </Router>
   );
 };
-
 export default App;

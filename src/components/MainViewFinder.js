@@ -7,38 +7,39 @@ gsap.registerPlugin(ScrollTrigger);
 const MainViewFinder = () => {
   const containerRef = useRef(null);
   const maskRef = useRef(null);
-  
-  useEffect(() => {
-  if (!maskRef.current || !containerRef.current) return;
 
-  const st = gsap.fromTo(
-    maskRef.current,
-    { "--r": "160px", "--x": "50%", "--y": "50%" },
-    {
-      "--r": `${window.innerWidth/2}px`,
+  useEffect(() => {
+    if (!maskRef.current || !containerRef.current) return;
+
+    const tl = gsap.timeline({
       ease: "none",
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=300%",   
+        end: "+=300%",
         scrub: true,
         pin: true,
         pinSpacing: true,
         // markers: true,
       },
-    }
-  );
+    });
 
-  // 이미지 로드/리사이즈 후 재계산
-  const onResize = () => ScrollTrigger.refresh();
-  window.addEventListener("resize", onResize);
+    tl.fromTo(
+      maskRef.current,
+      { "--r": "160px", "--x": "50%", "--y": "50%" },
+      { "--r": `${Math.hypot(window.innerWidth, window.innerHeight)}px`, ease: "none" }
+    ).fromTo(".main-ment", { opacity: 1 }, { opacity: 0, ease: "none" }, 0);
 
-  return () => {
-    window.removeEventListener("resize", onResize);
-    st.scrollTrigger?.kill();
-    st.kill();
-  };
-}, []);
+    // 이미지 로드/리사이즈 후 재계산
+    const onResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      window.removeEventListener("resize", onResize);
+      tl.scrollTrigger?.kill();
+      tl.kill();
+    };
+  }, []);
 
   return (
     <div className="container" ref={containerRef}>
@@ -56,5 +57,4 @@ const MainViewFinder = () => {
     </div>
   );
 };
-
 export default MainViewFinder;
