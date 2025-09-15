@@ -3,6 +3,7 @@ import PortpolioIndex from "./PortpolioIndex";
 import AboutMe from './AboutMe';
 import SkillsTools from './SkillsTools';
 import MainProject from './MainProject';
+import ClonecodingProject from "./CloneCodingProject";
 
 const MainPage = () => {
     return (
@@ -12,6 +13,7 @@ const MainPage = () => {
             <AboutMe />
             <SkillsTools />
             <MainProject />
+            <ClonecodingProject />
         </div>
     );
 };

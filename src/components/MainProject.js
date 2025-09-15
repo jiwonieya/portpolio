@@ -1,10 +1,37 @@
+import { useEffect, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const MainProject = () => {
   const navigate = useNavigate();
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        containerRef.current,
+        { autoAlpha: 0, y: 50 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            toggleActions: "restart none restart reset",
+          },
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <div className="main-project">
+    <div className="main-project" ref={containerRef}>
       <div className="header-menu">
         <h2>Main Project</h2>
         <div className="menu-buttons">

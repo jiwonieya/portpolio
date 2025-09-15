@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const skillsData = [
   { src: "/images/css.png", alt: "css 이미지", className: "css", name: "CSS3" },
@@ -15,6 +17,7 @@ const skillsData = [
 
 const SkillsTools = () => {
   const [visibleIndexes, setVisibleIndexes] = useState([]);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     skillsData.forEach((_, i) => {
@@ -24,8 +27,31 @@ const SkillsTools = () => {
     });
   }, []);
 
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        containerRef.current,
+        { autoAlpha: 0, y: 50 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            toggleActions: "restart none restart reset",
+          },
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <div className="skillstools-wrapper">
+    <div className="skillstools-wrapper" ref={containerRef}>
       <h1>
         Skills & <br /> Tools
       </h1>
