@@ -4,6 +4,9 @@ import AboutMe from './AboutMe';
 import SkillsTools from './SkillsTools';
 import MainProject from './MainProject';
 import ClonecodingProject from "./CloneCodingProject";
+import NetflixAlert from "./NetflixAlert";
+import AirbnbAlert from "./AirbnbAlert";
+import TeslaAlert from "./TeslaAlert";
 
 const MainPage = () => {
     return (
@@ -14,6 +17,9 @@ const MainPage = () => {
             <SkillsTools />
             <MainProject />
             <ClonecodingProject />
+            <NetflixAlert />
+            <AirbnbAlert />
+            <TeslaAlert />
         </div>
     );
 };
