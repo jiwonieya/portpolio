@@ -16,7 +16,8 @@
   gap: clamp(3.5rem, 7vw, 8rem);
 
   .ending-polaroid {
-    flex: 0 1 clamp(300px, 28vw, 380px);
+    flex: 0 1 clamp(340px, 32vw, 460px);
+    width: min(100%, 460px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +45,7 @@
     font-size: clamp(1.25rem, 2.3vw, 1.95rem);
     line-height: 1.5;
     color: #2f2f2f;
-    text-align: left;
+    text-align: center;
     letter-spacing: -0.01em;
 
     p {

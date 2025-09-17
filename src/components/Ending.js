@@ -1,6 +1,42 @@
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Ending = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) {
+      return undefined;
+    }
+
+    const ctx = gsap.context(() => {
+      const section = sectionRef.current;
+
+      gsap.fromTo(
+        section,
+        { autoAlpha: 0, y: 80 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none reset",
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="ending-container">
+    <section ref={sectionRef} className="ending-container">
       <div className="ending-wrapper">
         <div className="ending-polaroid">
           <img
@@ -11,7 +47,9 @@ const Ending = () => {
         <blockquote className="quote">
           <p>
             <span className="quote-line">
-              “사용자의 하루를 조금 더 편하고 즐겁게 만드는 디자이너,”
+              “사용자의 하루를
+              <br />
+              조금 더 편하고 즐겁게 만드는 디자이너,”
             </span>
             <br />
             <span className="quote-line">
