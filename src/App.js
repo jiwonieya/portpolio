@@ -7,7 +7,7 @@ import './App.scss';
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path='/' element={<MainPage />} />
         <Route path="/ririm-intro" element={<RirimIntro />} />
@@ -17,4 +17,5 @@ const App = () => {
     </Router>
   );
 };
+
 export default App;
