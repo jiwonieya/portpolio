@@ -2,19 +2,38 @@ import { IoLogoGithub } from "react-icons/io";
 import { FiMapPin } from "react-icons/fi";
 import { IoIosCloseCircle } from "react-icons/io";
 
-const NetflixAlert = () => {
+const NetflixAlert = ({ onClose }) => {
+  const handleBackdropClick = (event) => {
+    if (event.target === event.currentTarget && onClose) {
+      onClose();
+    }
+  };
   return (
-    <div className="netflix-alert-wrapper">
+    <div
+      className="netflix-alert-wrapper"
+      role="dialog"
+      aria-modal="true"
+      aria-label="넷플릭스 클론 프로젝트 상세"
+      onClick={handleBackdropClick}
+    >
       <div className="content-section">
-        <button className="close-button" aria-label="닫기">
+        <button
+          type="button"
+          className="close-button"
+          aria-label="닫기"
+          onClick={onClose}
+        >
           <IoIosCloseCircle />
         </button>
 
         {/* 전체 콘텐츠의 제목 */}
         <h2 className="content-title">NETFLIX CLONE SITE</h2>
 
-        {/* TODO: 여기에 <img src="이미지링크" alt="넷플릭스 클론 스크린샷" className="project-screenshot" /> 태그를 넣어주세요. */}
-        {/* 예시: <img src="https://example.com/netflix-screenshot.jpg" alt="넷플릭스 클론 스크린샷" className="project-screenshot" /> */}
+        <img
+          src={`${process.env.PUBLIC_URL}/images/netflix.png`}
+          alt="넷플릭스 클론 이미지"
+          className="project-screenshot"
+        />
 
         {/* 버튼 그룹 */}
         <div className="netflix-links">
@@ -49,9 +68,8 @@ const NetflixAlert = () => {
             <p>
               넷플릭스(www.netflix.com)
               <br />
-              실제 넷플릭스처럼 사용자가 인기 영화/TV 프로그램을 보고,
-              <br />
-              클릭 시 상세 정보를 확인할 수 있도록 구성한 프로젝트입니다.
+              실제 넷플릭스처럼 사용자가 인기 영화/TV 프로그램을 보고, 클릭 시
+              상세 정보를 확인할 수 있도록 구성한 프로젝트입니다.
             </p>
           </div>
           <div className="paragraph">

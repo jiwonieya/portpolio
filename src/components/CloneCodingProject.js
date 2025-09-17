@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { RiNetflixFill } from "react-icons/ri";
 import { SiAirbnb } from "react-icons/si";
 import { SiTesla } from "react-icons/si";
 import { FiGithub } from "react-icons/fi";
 import { MdOutlineFindInPage } from "react-icons/md";
+import NetflixAlert from "./NetflixAlert";
+import AirbnbAlert from "./AirbnbAlert";
+import TeslaAlert from "./TeslaAlert";
 
 const projects = [
   {
@@ -12,8 +16,8 @@ const projects = [
     description:
       "인기 콘텐츠를 보고 클릭해 상세 정보를 확인할 수 있는 넷플릭스 클론 웹페이지입니다.",
     Icon: RiNetflixFill,
-    siteUrl: "https://jiwonieya.github.io/netflix-clone/", 
-    githubUrl: "https://github.com/jiwonieya/netflix-clone", 
+    siteUrl: "https://jiwonieya.github.io/netflix-clone/",
+    githubUrl: "https://github.com/jiwonieya/netflix-clone",
   },
   {
     id: 2,
@@ -22,8 +26,8 @@ const projects = [
     description:
       "HTML과 CSS만으로 에어비앤비 메인 페이지를 클론한 정적 웹페이지입니다.",
     Icon: SiAirbnb,
-    siteUrl: "https://jiwonieya.github.io/airbnb-clone/", 
-    githubUrl: "https://github.com/jiwonieya/airbnb-clone", 
+    siteUrl: "https://jiwonieya.github.io/airbnb-clone/",
+    githubUrl: "https://github.com/jiwonieya/airbnb-clone",
   },
   {
     id: 3,
@@ -32,26 +36,57 @@ const projects = [
     description:
       "영상 배경과 섹션 디자인으로 브랜드 감성을 재현한 테슬라 클론 웹페이지입니다.",
     Icon: SiTesla,
-    siteUrl: "https://jiwonieya.github.io/tesla-clone/", 
+    siteUrl: "https://jiwonieya.github.io/tesla-clone/",
     githubUrl: "https://github.com/jiwonieya/tesla-clone",
   },
 ];
 
+const modalComponents = {
+  1: NetflixAlert,
+  2: AirbnbAlert,
+  3: TeslaAlert,
+};
+
 const ClonecodingProject = () => {
+  const [activeProjectId, setActiveProjectId] = useState(null);
+
+  const handleProjectClick = (id) => {
+    if (modalComponents[id]) {
+      setActiveProjectId(id);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setActiveProjectId(null);
+  };
+
+  const ActiveModal =
+    activeProjectId !== null ? modalComponents[activeProjectId] : null;
+
   return (
     <section className="clonecoding-container">
       <h1 className="clonecoding-title">CLONE CODING PROJECT</h1>
 
       {projects.map(
-        (
-          { id, title, subtitle, description, Icon, siteUrl, githubUrl }
-        ) => (
+        ({ id, title, subtitle, description, Icon, siteUrl, githubUrl }) => (
           <article key={id} className="clonecoding-item">
             <div className="clonecoding-info-group">
-              <Icon
-                className="clonecoding-icon"
-                aria-label={`${title} 아이콘`}
-              />
+              <button
+                type="button"
+                className={`clonecoding-icon-button ${
+                  modalComponents[id] ? "is-clickable" : ""
+                }`}
+                onClick={
+                  modalComponents[id] ? () => handleProjectClick(id) : undefined
+                }
+                aria-label={
+                  modalComponents[id]
+                    ? `${title} 상세 소개 보기`
+                    : `${title} 아이콘`
+                }
+              >
+                <Icon className="clonecoding-icon" aria-hidden="true" />
+              </button>
               <div>
                 <h3 className="clonecoding-name">
                   {title}{" "}
@@ -82,6 +117,7 @@ const ClonecodingProject = () => {
           </article>
         )
       )}
+      {ActiveModal && <ActiveModal onClose={handleCloseModal} />}
     </section>
   );
 };
