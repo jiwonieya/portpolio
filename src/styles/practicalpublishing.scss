@@ -1,0 +1,49 @@
+.practical-publishing {
+  margin: 0 auto;
+  padding: 20px;
+
+  .title {
+    @include en-font;
+    font-size: 80px;
+    transform: rotate(-8deg);
+    line-height: 1.2;
+    margin-bottom: 30px;
+    white-space: pre-line;
+    display: inline-block;
+    padding-bottom: 8px;
+  }
+
+  .image-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    .image-box {
+      flex: 1;
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+
+      p {
+        @include en-font;
+        font-size: 40px;
+      }
+    }
+
+    .quiz-box {
+      background-color: white;
+      padding: 20px;
+
+      p {
+        margin-top: 15px;
+      }
+    }
+  }
+}

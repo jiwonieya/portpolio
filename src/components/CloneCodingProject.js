@@ -20,6 +20,7 @@ const projects = [
     Icon: RiNetflixFill,
     siteUrl: "https://jiwonieya.github.io/netflix-clone/",
     githubUrl: "https://github.com/jiwonieya/netflix-clone",
+    previewImage: "/images/netflix.png",
   },
   {
     id: 2,
@@ -30,6 +31,7 @@ const projects = [
     Icon: SiAirbnb,
     siteUrl: "https://jiwonieya.github.io/airbnb-clone/",
     githubUrl: "https://github.com/jiwonieya/airbnb-clone",
+    previewImage: "/images/airbnb.png",
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ const projects = [
     Icon: SiTesla,
     siteUrl: "https://jiwonieya.github.io/tesla-clone/",
     githubUrl: "https://github.com/jiwonieya/tesla-clone",
+    previewImage: "/images/tesla.png",
   },
 ];
 
@@ -51,6 +54,7 @@ const modalComponents = {
 
 const ClonecodingProject = () => {
   const [activeProjectId, setActiveProjectId] = useState(null);
+  const [hoveredProjectId, setHoveredProjectId] = useState(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -119,17 +123,30 @@ const ClonecodingProject = () => {
       <h1 className="clonecoding-title">CLONE CODING PROJECT</h1>
 
       {projects.map(
-        ({ id, title, subtitle, description, Icon, siteUrl, githubUrl }) => (
+        ({
+          id,
+          title,
+          subtitle,
+          description,
+          Icon,
+          siteUrl,
+          githubUrl,
+          previewImage,
+        }) => (
           <article key={id} className="clonecoding-item">
             <div className="clonecoding-info-group">
               <button
                 type="button"
                 className={`clonecoding-icon-button ${
                   modalComponents[id] ? "is-clickable" : ""
-                }`}
+                } ${hoveredProjectId === id ? "is-hovered" : ""}`}
                 onClick={
                   modalComponents[id] ? () => handleProjectClick(id) : undefined
                 }
+                onMouseEnter={() => setHoveredProjectId(id)}
+                onMouseLeave={() => setHoveredProjectId(null)}
+                onFocus={() => setHoveredProjectId(id)}
+                onBlur={() => setHoveredProjectId(null)}
                 aria-label={
                   modalComponents[id]
                     ? `${title} 상세 소개 보기`
@@ -137,6 +154,14 @@ const ClonecodingProject = () => {
                 }
               >
                 <Icon className="clonecoding-icon" aria-hidden="true" />
+                <div
+                  className={`clonecoding-preview ${
+                    hoveredProjectId === id ? "is-visible" : ""
+                  }`}
+                  aria-hidden="true"
+                >
+                  <img src={previewImage} alt="" />
+                </div>
               </button>
               <div>
                 <h3 className="clonecoding-name">

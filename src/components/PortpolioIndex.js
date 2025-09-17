@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,21 +8,35 @@ const PortpolioIndex = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        containerRef.current,
-        { autoAlpha: 0, y: 50 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%",
-            toggleActions: "restart none restart reset",
+      const container = containerRef.current;
+      const items = container ? container.querySelectorAll("ol li") : [];
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: container,
+          start: "top 80%",
+          toggleActions: "restart none restart reset",
+        },
+      });
+
+      timeline
+        .fromTo(
+          container,
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0, duration: 1, ease: "power3.out" }
+        )
+        .fromTo(
+          items,
+          { autoAlpha: 0, y: 30 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+            stagger: 0.15,
           },
-        }
-      );
+          "-=0.4"
+        );
     }, containerRef);
 
     return () => ctx.revert();

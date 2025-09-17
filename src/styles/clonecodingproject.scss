@@ -42,6 +42,7 @@
   padding: 0;
   display: inline-flex;
   cursor: default;
+  position: relative;
 }
 
 .clonecoding-icon-button.is-clickable {
@@ -57,6 +58,42 @@
   width: 62px;
   height: 113px;
   flex-shrink: 0;
+  transform-origin: center;
+}
+
+.clonecoding-icon-button.is-hovered .clonecoding-icon {
+  animation: clonecoding-icon-pulse 0.9s ease-in-out infinite;
+}
+
+@keyframes clonecoding-icon-pulse {
+  0%,
+  100% {
+    transform: scale(0.95);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clonecoding-icon-button.is-hovered .clonecoding-icon {
+    animation: none;
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+  }
+}
+
+.clonecoding-item:nth-of-type(1) .clonecoding-icon {
+  color: #e50914;
+}
+
+.clonecoding-item:nth-of-type(2) .clonecoding-icon {
+  color: #ff5a5f;
+}
+
+.clonecoding-item:nth-of-type(3) .clonecoding-icon {
+  color: #cc0000;
 }
 
 .clonecoding-name {
@@ -68,6 +105,34 @@
   .clonecoding-subtitle {
     margin-left: 0.5rem;
     font-size: 30px;
+  }
+}
+
+.clonecoding-preview {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 16px);
+  transform: translateY(-50%) scale(0.75);
+  width: 150px;
+  max-width: 40vw;
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  filter: blur(2px);
+  transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    filter: blur(1.2px);
+    transform: translateY(-50%) scale(0.85);
   }
 }
 
