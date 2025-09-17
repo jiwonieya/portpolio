@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -31,13 +31,13 @@ const MainProject = () => {
   }, []);
 
   return (
-    <div className="main-project" ref={containerRef}>
+    <div id="main-project-section" className="main-project" ref={containerRef}>
       <div className="header-menu">
         <h2>Main Project</h2>
         <div className="menu-buttons">
-          <button onClick={() => navigate('/ririm-intro')}>Ririm</button>
-          <button onClick={()=> navigate('/pin-intro')}>P’IN</button>
-          <button onClick={()=> navigate('/blog-intro')}>BLOG</button>
+          <button onClick={() => navigate("/ririm-intro")}>Ririm</button>
+          <button onClick={() => navigate("/pin-intro")}>P’IN</button>
+          <button onClick={() => navigate("/blog-intro")}>BLOG</button>
         </div>
       </div>
 
@@ -69,5 +69,6 @@ const MainProject = () => {
     </div>
   );
 };
+
 
 export default MainProject;

@@ -52,7 +52,7 @@ const AboutMe = () => {
   }, []);
 
   return (
-    <div className="about-me-wrapper" ref={containerRef}>
+    <div id="about-me-section" className="about-me-wrapper" ref={containerRef}>
       <div className="absolute-title">
         ABOUT <br />
         ME

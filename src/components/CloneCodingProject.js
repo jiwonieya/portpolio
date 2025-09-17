@@ -119,7 +119,11 @@ const ClonecodingProject = () => {
     activeProjectId !== null ? modalComponents[activeProjectId] : null;
 
   return (
-    <section ref={containerRef} className="clonecoding-container">
+    <section
+      ref={containerRef}
+      id="clone-coding-section"
+      className="clonecoding-container"
+    >
       <h1 className="clonecoding-title">CLONE CODING PROJECT</h1>
 
       {projects.map(

@@ -59,7 +59,7 @@ const Ending = () => {
         </blockquote>
       </div>
       <div className="contact-info">
-        정지원 | 010-****-**** | 003jung@naver.com |
+        정지원 | 010-9963-6320 | 003jung@naver.com |
       </div>
     </section>
   );

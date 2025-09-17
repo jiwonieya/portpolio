@@ -91,7 +91,11 @@ const PracticalPublishing = () => {
   };
 
   return (
-     <div ref={componentRef} className="practical-publishing">
+    <div
+      ref={componentRef}
+      id="practical-publishing-section"
+      className="practical-publishing"
+    >
       <h1 className="title">
         PRACTICAL
         <br />
