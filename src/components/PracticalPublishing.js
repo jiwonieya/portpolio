@@ -20,6 +20,7 @@ const PracticalPublishing = () => {
           <img
             src={`${process.env.PUBLIC_URL}/images/luckydory.png`}
             alt="luckdory 이미지"
+            className="luckydory-image"
           />
           <p>Luckydory</p>
         </div>
