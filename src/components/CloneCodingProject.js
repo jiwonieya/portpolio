@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RiNetflixFill } from "react-icons/ri";
 import { SiAirbnb } from "react-icons/si";
 import { SiTesla } from "react-icons/si";
 import { FiGithub } from "react-icons/fi";
 import { MdOutlineFindInPage } from "react-icons/md";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import NetflixAlert from "./NetflixAlert";
 import AirbnbAlert from "./AirbnbAlert";
 import TeslaAlert from "./TeslaAlert";
@@ -49,6 +51,55 @@ const modalComponents = {
 
 const ClonecodingProject = () => {
   const [activeProjectId, setActiveProjectId] = useState(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const section = containerRef.current;
+
+      if (section) {
+        gsap.fromTo(
+          section,
+          { autoAlpha: 0, y: 60 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      const items = gsap.utils.toArray(".clonecoding-item");
+
+      items.forEach((item) => {
+        gsap.fromTo(
+          item,
+          { autoAlpha: 0, y: 40 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const handleProjectClick = (id) => {
     if (modalComponents[id]) {
@@ -64,7 +115,7 @@ const ClonecodingProject = () => {
     activeProjectId !== null ? modalComponents[activeProjectId] : null;
 
   return (
-    <section className="clonecoding-container">
+    <section ref={containerRef} className="clonecoding-container">
       <h1 className="clonecoding-title">CLONE CODING PROJECT</h1>
 
       {projects.map(
