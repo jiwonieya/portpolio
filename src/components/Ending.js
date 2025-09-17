@@ -9,10 +9,15 @@ const Ending = () => {
           />
         </div>
         <blockquote className="quote">
-          “사용자의 하루를 <br />
-          조금 더 편하고 <br />
-          즐겁게 만드는 디자이너, <br />
-          오늘도 <br />한 걸음씩 성장하고 있습니다”
+          <p>
+            <span className="quote-line">
+              “사용자의 하루를 조금 더 편하고 즐겁게 만드는 디자이너,”
+            </span>
+            <br />
+            <span className="quote-line">
+              오늘도 한 걸음씩 성장하고 있습니다.”
+            </span>
+          </p>
         </blockquote>
       </div>
       <div className="contact-info">
