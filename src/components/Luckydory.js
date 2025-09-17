@@ -3,10 +3,15 @@ import { MdOutlineFindInPage } from "react-icons/md";
 
 import { IoIosCloseCircle } from "react-icons/io";
 
-const Luckydory = () => {
+const Luckydory = ({ onClose = () => {} }) => {
   return (
     <div className="luckydory-container">
-      <button className="close-btn" type="button" aria-label="닫기">
+      <button
+        className="close-btn"
+        type="button"
+        aria-label="닫기"
+        onClick={onClose}
+      >
         <IoIosCloseCircle />
       </button>
 
@@ -45,7 +50,9 @@ const Luckydory = () => {
           <p className="luckydory-description">
             리액트로 컴포넌트 구성, alert창 사용,
             <br />
-            라우터를 통한 페이지 이동 등을<br />연습하기 위해 만든 프로젝트
+            라우터를 통한 페이지 이동 등을
+            <br />
+            연습하기 위해 만든 프로젝트
           </p>
         </div>
       </div>

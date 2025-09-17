@@ -5,9 +5,6 @@ import SkillsTools from "./SkillsTools";
 import MainProject from "./MainProject";
 import ClonecodingProject from "./CloneCodingProject";
 import PracticalPublishing from "./PracticalPublishing";
-import Grid from "./Grid";
-import Luckydory from "./Luckydory";
-import QuizGame from "./QuizGame";
 
 const MainPage = () => {
   return (
@@ -19,9 +16,6 @@ const MainPage = () => {
       <MainProject />
       <ClonecodingProject />
       <PracticalPublishing />
-      <Grid />
-      <Luckydory />
-      <QuizGame />
     </div>
   );
 };

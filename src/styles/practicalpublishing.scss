@@ -1,6 +1,6 @@
 .practical-publishing {
   margin: 0 3rem;
-  padding: 20px;
+  padding: 3rem 0;
 
   .title {
     @include en-font;
@@ -66,5 +66,28 @@
         margin-top: 15px;
       }
     }
+  }
+}
+
+.project-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  z-index: 1000;
+
+  .project-alert-content {
+    width: min(1200px, 100%);
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
   }
 }

@@ -3,10 +3,15 @@ import { MdOutlineFindInPage } from "react-icons/md";
 
 import { IoIosCloseCircle } from "react-icons/io";
 
-const QuizGame = () => {
+const QuizGame = ({ onClose = () => {} }) => {
   return (
     <div className="quiz-container">
-      <button className="close-btn" type="button" aria-label="닫기">
+      <button
+        className="close-btn"
+        type="button"
+        aria-label="닫기"
+        onClick={onClose}
+      >
         <IoIosCloseCircle />
       </button>
 
@@ -45,8 +50,9 @@ const QuizGame = () => {
           <p className="quiz-description">
             리액트에서 quizdata.js로 데이터를 분리해
             <br />
-            재사용하고, 컴포넌트에 반복 작성 없이<br />4지선다형 퀴즈 게임을 구현한
-            프로젝트
+            재사용하고, 컴포넌트에 반복 작성 없이
+            <br />
+            4지선다형 퀴즈 게임을 구현한 프로젝트
           </p>
         </div>
       </div>
