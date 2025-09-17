@@ -5,6 +5,7 @@ import SkillsTools from "./SkillsTools";
 import MainProject from "./MainProject";
 import ClonecodingProject from "./CloneCodingProject";
 import PracticalPublishing from "./PracticalPublishing";
+import Ending from "./Ending";
 
 const MainPage = () => {
   return (
@@ -16,6 +17,7 @@ const MainPage = () => {
       <MainProject />
       <ClonecodingProject />
       <PracticalPublishing />
+      <Ending />
     </div>
   );
 };
