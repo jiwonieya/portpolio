@@ -10,6 +10,8 @@ import NetflixAlert from "./NetflixAlert";
 import AirbnbAlert from "./AirbnbAlert";
 import TeslaAlert from "./TeslaAlert";
 
+const publicUrl = process.env.PUBLIC_URL || "";
+
 const projects = [
   {
     id: 1,
@@ -20,7 +22,7 @@ const projects = [
     Icon: RiNetflixFill,
     siteUrl: "https://jiwonieya.github.io/netflix-clone/",
     githubUrl: "https://github.com/jiwonieya/netflix-clone",
-    previewImage: "/images/netflix.png",
+    previewImage: `${publicUrl}/images/netflix.png`,
   },
   {
     id: 2,
@@ -31,7 +33,7 @@ const projects = [
     Icon: SiAirbnb,
     siteUrl: "https://jiwonieya.github.io/airbnb-clone/",
     githubUrl: "https://github.com/jiwonieya/airbnb-clone",
-    previewImage: "/images/airbnb.png",
+    previewImage: `${publicUrl}/images/airbnb.png`,
   },
   {
     id: 3,
@@ -42,7 +44,7 @@ const projects = [
     Icon: SiTesla,
     siteUrl: "https://jiwonieya.github.io/tesla-clone/",
     githubUrl: "https://github.com/jiwonieya/tesla-clone",
-    previewImage: "/images/tesla.png",
+    previewImage: `${publicUrl}/images/tesla.png`,
   },
 ];
 
